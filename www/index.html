@@ -52,7 +52,18 @@
 	{
 		// do your thing!
 		//navigator.notification.alert("PhoneGap is working")
+        navigator.compass.getCurrentHeading(onSuccess, onError);
+        
 	}
+        
+        function onSuccess(heading) {
+            alert('Heading: ' + heading);
+        };
+        
+        function onError() {
+            alert('onError!');
+        };
+        
     
     </script>
   </head>
