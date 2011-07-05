@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Compass Example</title>
-
-    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8">
-
-    // The watch id references the current `watchHeading`
-    var watchID = null;
-
-    // Wait for PhoneGap to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // PhoneGap is ready
-    //
-    alert('fgjhghjghj');
-    function onDeviceReady() {
-        alert('fgjhghjghj');
-        startWatch();
-    }
-
-    // Start watching the compass
-    //
-    function startWatch() {
-
-        // Update compass every 3 seconds
-        var options = { frequency: 3000 };
-
-        watchID = navigator.compass.watchHeading(onSuccess, onError, options);
-    }
-
-    // Stop watching the compass
-    //
-    function stopWatch() {
-        if (watchID) {
-            navigator.compass.clearWatch(watchID);
-            watchID = null;
-        }
-    }
-
-    // onSuccess: Get the current heading
-    //
-    function onSuccess(heading) {
-        var element = document.getElementById('heading');
-        element.innerHTML = 'Heading: ' + heading;
-    }
-
-    // onError: Failed to get the heading
-    //
-    function onError() {
-        alert('onError!');
-    }
-
-    </script>
+    <title>
+      Hello World
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;' name='viewport' />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-type' />
+    <link href='jquery.mobile.css' rel='stylesheet' />
+    <script src='jquery.js' type='text/javascript'></script>
+    <script src='jquery.mobile.js' type='text/javascript'></script>
+    <script src='phonegap.js' type='text/javascript'></script>
   </head>
-  <body>
-    <div id="heading">Waiting for heading...</div>
-    <button onclick="startWatch();">Start Watching</button>
-    <button onclick="stopWatch();">Stop Watching</button>
+  <body onload='onBodyLoad()'>
+    <div data-role='page'>
+      <script type='text/javascript'>
+        //<![CDATA[
+          var watchID = null;
+          
+          document.addEventListener("deviceready", onDeviceReady, false);
+          
+          function onDeviceReady() {
+            startWatch();
+          }
+          
+          function startWatch() {
+            var options = { frequency: 3000 };
+            watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+          }
+          
+          function stopWatch() {
+            if (watchID) {
+              navigator.compass.clearWatch(watchID);
+              watchID = null;
+            }
+          }
+          
+          function onSuccess(heading) {
+            var element = document.getElementById('heading');
+            element.innerHTML = 'Heading: ' + heading;
+          }
+          
+          function onError() {
+            alert('onError! was called. Could not read your compass');
+          }
+        //]]>
+      </script>
+      <div data-role='header'>
+        <a data-icon='back' data-rel='back'>Back</a>
+        <h1>Compass baby...</h1>
+      </div>
+      <div data-role='content'>
+        <span id='heading'>
+          Waiting for heading...
+        </span>
+        <button onclick='startWatch();'>
+          Start Watching
+        </button>
+        <button onclick='stopWatch();'>
+          Stop Watching
+        </button>
+      </div>
+    </div>
   </body>
 </html>

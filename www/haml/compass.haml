@@ -1,0 +1,40 @@
+=render "layout" do
+  :javascript
+    var watchID = null;
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+      startWatch();
+    }
+
+    function startWatch() {
+      var options = { frequency: 3000 };
+      watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+    }
+
+    function stopWatch() {
+      if (watchID) {
+        navigator.compass.clearWatch(watchID);
+        watchID = null;
+      }
+    }
+
+    function onSuccess(heading) {
+      var element = document.getElementById('heading');
+      element.innerHTML = 'Heading: ' + heading;
+    }
+
+    function onError() {
+      alert('onError! was called. Could not read your compass');
+    }
+  %div(data-role="header")
+    %a(data-icon="back" data-rel="back") Back
+    %h1 Compass baby...
+  %div(data-role="content")
+    %span(id="heading")
+      Waiting for heading...
+    %button(onclick="startWatch();")
+      Start Watching
+    %button(onclick="stopWatch();")
+      Stop Watching

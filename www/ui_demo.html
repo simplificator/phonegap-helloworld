@@ -1,52 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello World</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="jquery.mobile.css" />
-    <script type="text/javascript" charset="utf-8" src="jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="jquery.mobile.js"></script>
-    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8">
-      function onBodyLoad() {		
-		    document.addEventListener("deviceready",onDeviceReady,false);
-	    }
-	    
-	    function onDeviceReady() {
-
-	    }
-        
-    </script>
+    <title>
+      Hello World
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;' name='viewport' />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-type' />
+    <link href='jquery.mobile.css' rel='stylesheet' />
+    <script src='jquery.js' type='text/javascript'></script>
+    <script src='jquery.mobile.js' type='text/javascript'></script>
+    <script src='phonegap.js' type='text/javascript'></script>
   </head>
-  <body>
-      <div data-role="page" id="main">
-        <div data-role="header" data-position="inline">
-          <a href="index.html" data-icon="back" data-rel="back">Back</a>
-        	<h1>Some UI Tests</h1>
-        </div>
-        <div data-role="content">
-          Do you like jQuery Mobile?
-          <div data-role="controlgroup">
-            <a href="index.html" data-role="button">Yes</a>
-            <a href="index.html" data-role="button">No</a>
-            <a href="index.html" data-role="button">Maybe</a>
-          </div>
-          <a href="#sub" data-role="button">Wiiiiide Button</a>
-          But don't worry. There are <a href="#sub" data-role="button" data-inline="true">Inline Buttons</a> as well.
-        </div>
-        <div data-role="footer">But i dont want a footer</div>
+  <body onload='onBodyLoad()'>
+    <div data-role='page'>
+      <div data-position='inline' data-role='header'>
+        <a data-icon='back' data-rel='back' href='index.html'>
+          Back
+        </a>
+        <h1>
+          Some UI Tests
+        </h1>
       </div>
-      
-      <div data-role="page" id="sub">
-        <div data-role="header" data-position="inline">
-          <a href="index.html" data-icon="back" data-rel="back">Back</a>
-        	<h1>Another header...</h1>
+      <div data-role='content'>
+        <div data-role='controlgroup'>
+          <a data-role='button' href='index.html'>Yes</a>
+          <a data-role='button' href='index.html'>No</a>
+          <a data-role='button' href='index.html'>Maybe</a>
         </div>
-        <div data-role="content">
-          Internal Page navigation. It's magic.
-        </div>
-        <div data-role="footer">But i dont want a footer</div>
       </div>
+      <div data-role='footer'>
+        But i dont want a footer
+      </div>
+    </div>
   </body>
 </html>

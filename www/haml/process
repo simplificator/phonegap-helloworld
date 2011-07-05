@@ -1,0 +1,9 @@
+#! /usr/bin/env ruby
+# encoding: utf-8
+require 'fileutils'
+Dir['*.haml'].reject { |name|name.start_with?('_') }.each do |name|
+  source = name
+  destination = '../' + name.gsub('haml', 'html')
+  puts "Processing #{source} to #{destination}"
+  `haml -I . -r helpers.rb #{source} #{destination}`
+end

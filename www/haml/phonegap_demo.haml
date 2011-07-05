@@ -1,0 +1,18 @@
+=render "layout" do
+  :javascript
+    function onBodyLoad() {   
+      document.addEventListener("deviceready",onDeviceReady,false);
+    }
+    
+    function onDeviceReady() {
+
+    }
+  %div(data-role="header" data-position="inline")
+    %a(href="index.html" data-icon="back" data-rel="back")
+      Back
+    %h1
+      Some Phonegap Demos
+  %div(data-role="content")
+    Content here
+  %div(data-role="footer")
+    But i dont want a footer
