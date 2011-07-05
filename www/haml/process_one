@@ -1,0 +1,5 @@
+#!/bin/sh
+SRC=$1
+DST=.`echo $1 | sed 's/haml/html/'`
+echo "Processing $SRC to $DST"
+haml -I . -r helpers.rb $SRC $DST

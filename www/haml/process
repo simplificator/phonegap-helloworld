@@ -1,0 +1,3 @@
+#!/bin/sh
+rm ../*.html
+find -type f ! -name '_*' -name '*.haml' -exec ./process_one {} \;

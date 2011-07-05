@@ -15,46 +15,30 @@
     <div data-role='page'>
       <script type='text/javascript'>
         //<![CDATA[
-          var watchID = null;
-          
           document.addEventListener("deviceready", onDeviceReady, false);
           
-          alert('fgjhghjghj');
+          var watchID = null;
           function onDeviceReady() {
-            alert('fgjhghjghj');
-            startWatch();
-          }
-          
-          function startWatch() {
             var options = { frequency: 3000 };
-            watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+            watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
           }
           
-          function stopWatch() {
-            if (watchID) {
-              navigator.compass.clearWatch(watchID);
-              watchID = null;
-            }
+          function onSuccess(position) {
+            var element = document.getElementById('geolocation');
+            element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                                'Longitude: ' + position.coords.longitude     + '<br />' +
+                                '<hr />'      + element.innerHTML;
           }
           
-          function onSuccess(heading) {
-            var element = document.getElementById('heading');
-            element.innerHTML = 'Heading: ' + heading;
-          }
-          
-          function onError() {
-            alert('onError!');
+          function onError(error) {
+            alert('code: '    + error.code    + '\n' +
+                  'message: ' + error.message + '\n');
           }
         //]]>
       </script>
-      <div id='heading'>
-        Waiting for heading...
-        <button onclick='startWatch();'>
-          Start Watching
-        </button>
-        <button onclick='stopWatch();'></button>
-        Stop Watching
-      </div>
+      <p id='geolocation'>
+        Watching geolocation...
+      </p>
     </div>
   </body>
 </html>
