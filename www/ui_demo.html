@@ -19,13 +19,33 @@
         
     </script>
   </head>
-  <body onload="onBodyLoad()">
-      <div data-role="page" id="">
+  <body>
+      <div data-role="page" id="main">
         <div data-role="header" data-position="inline">
-        	<a href="index.html" data-icon="back" data-rel="back">Back</a>
+          <a href="index.html" data-icon="back" data-rel="back">Back</a>
         	<h1>Some UI Tests</h1>
         </div>
-        <div data-role="content">Installing XCode is a long and winding road</div>
+        <div data-role="content">
+          Do you like jQuery Mobile?
+          <div data-role="controlgroup">
+            <a href="index.html" data-role="button">Yes</a>
+            <a href="index.html" data-role="button">No</a>
+            <a href="index.html" data-role="button">Maybe</a>
+          </div>
+          <a href="#sub" data-role="button">Wiiiiide Button</a>
+          But don't worry. There are <a href="#sub" data-role="button" data-inline="true">Inline Buttons</a> as well.
+        </div>
+        <div data-role="footer">But i dont want a footer</div>
+      </div>
+      
+      <div data-role="page" id="sub">
+        <div data-role="header" data-position="inline">
+          <a href="index.html" data-icon="back" data-rel="back">Back</a>
+        	<h1>Another header...</h1>
+        </div>
+        <div data-role="content">
+          Internal Page navigation. It's magic.
+        </div>
         <div data-role="footer">But i dont want a footer</div>
       </div>
   </body>
