@@ -48,30 +48,22 @@
 	/* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
 	see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
 	for more details -jm */
-	function onDeviceReady()
-	{
-		// do your thing!
-		//navigator.notification.alert("PhoneGap is working")
-        navigator.compass.getCurrentHeading(onSuccess, onError);
+	function onDeviceReady() {
         
 	}
-        
-        function onSuccess(heading) {
-            alert('Heading: ' + heading);
-        };
-        
-        function onError() {
-            alert('onError!');
-        };
-        
+
     
     </script>
   </head>
   <body onload="onBodyLoad()">
       <div data-role="page">
         <div data-role="header">Welcome to Hello World</div>
-        <div data-role="content">Installing XCode is a long and winding road</div>
-        <div data-role="footer">But i dont want a footer</div>
+        <div data-role="content">
+            Some Demo pages
+            <a href="ui_demo.html" data-role="button">UI Demo</a>
+            <a href="phonegap_demo.html" data-role="button">Phonegap Demo</a>
+        </div>
+        <div data-role="footer">He who does not have a footer is a poor man</div>
       </div>
   </body>
 </html>
