@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Hello World
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;' name='viewport' />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-type' />
+    <link href='jquery.mobile.css' rel='stylesheet' />
+    <script src='jquery.js' type='text/javascript'></script>
+    <script src='jquery.mobile.js' type='text/javascript'></script>
+    <script src='phonegap.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <div data-role='page'>
+      <script type='text/javascript'>
+        //<![CDATA[
+          function onSuccess(contacts) {
+          $("#contacts li").remove();
+            for (var i = 0; i < contacts.length; i++) {
+              var li = $("<li>" + contacts[i].name.formatted + "</li>");
+              li.appendTo($("#contacts"));
+            }
+            $("#contacts").listview("refresh");
+          };
+          
+          function onError() {
+              alert('onError!');
+          };
+          
+          function searchContacts() {
+            var options = new ContactFindOptions();
+            options.filter= $("#search").val();
+            var fields = ["displayName", "name"];
+            navigator.service.contacts.find(fields, onSuccess, onError, options);
+          }
+        //]]>
+      </script>
+      <div data-role='header'>
+        <a data-icon='back' data-rel='back'>Back</a>
+        <h1>Contacts baby...</h1>
+      </div>
+      <div data-role='content'>
+        <div data-role='fieldcontain'>
+          <label for='search'>Type to search</label>
+          <input id='search' onkeyup='searchContacts()' type='search' />
+        </div>
+        <br />
+        <ul data-role='listview' data-theme='c' id='contacts'></ul>
+      </div>
+    </div>
+  </body>
+</html>

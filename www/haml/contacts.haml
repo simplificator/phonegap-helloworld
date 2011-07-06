@@ -1,0 +1,30 @@
+=render "layout" do
+  :javascript
+    function onSuccess(contacts) {
+    $("#contacts li").remove();
+      for (var i = 0; i < contacts.length; i++) {
+        var li = $("<li>" + contacts[i].name.formatted + "</li>");
+        li.appendTo($("#contacts"));
+      }
+      $("#contacts").listview("refresh");
+    };
+
+    function onError() {
+        alert('onError!');
+    };
+    
+    function searchContacts() {
+      var options = new ContactFindOptions();
+      options.filter= $("#search").val();
+      var fields = ["displayName", "name"];
+      navigator.service.contacts.find(fields, onSuccess, onError, options);
+    }
+  %div(data-role="header")
+    %a(data-icon="back" data-rel="back") Back
+    %h1 Contacts baby...
+  %div(data-role="content")
+    %div(data-role="fieldcontain")
+      %label(for="search") Type to search
+      %input(type="search" id="search" onkeyup="searchContacts()")
+    %br
+    %ul(data-role="listview" data-theme="c" id="contacts")
